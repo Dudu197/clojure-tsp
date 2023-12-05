@@ -7,10 +7,10 @@
 
 (defn gerar-distancias-cidade
   [cidade]
-  (for [i (range cidade num-cidades)]
+  (for [_ (range cidade num-cidades)]
     (if (rand-nth [true false])
       (rand-int distancia-maxima)
-      0)
+      -1)
     )
   )
 
@@ -36,7 +36,20 @@
 (defn distancia
   [mapa cidade1 cidade2]
   (if (< cidade1 cidade2)
-    (get mapa (nome-mapa cidade1 cidade2) 0)
-    (get mapa (nome-mapa cidade2 cidade1) 0)
+    (get mapa (nome-mapa cidade1 cidade2))
+    (get mapa (nome-mapa cidade2 cidade1))
     )
   )
+
+(defn calcula-rota
+  ([mapa rota] (calcula-rota mapa rota 0))
+  ([mapa rota acc]
+    (if (> (count rota) 1)
+        (if (> (distancia mapa (first rota) (second rota)) 0)
+          (calcula-rota mapa (rest rota) (+ acc (distancia mapa (first rota) (second rota))))
+          (calcula-rota mapa [] -1)
+        )
+      acc
+    )
+  )
+)
