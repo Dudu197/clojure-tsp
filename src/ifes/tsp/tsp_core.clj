@@ -9,7 +9,7 @@
   [cidade]
   (for [_ (range cidade num-cidades)]
     (if (rand-nth [true false])
-      (rand-int distancia-maxima)
+      (inc (rand-int distancia-maxima))
       -1)
     )
   )
@@ -52,4 +52,9 @@
       acc
     )
   )
+)
+
+(defn rotas-validas
+  [rotas]
+  (filter (fn [rota] (> (get rota :custo) -1)) rotas)
 )

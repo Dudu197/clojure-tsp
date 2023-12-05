@@ -1,6 +1,7 @@
 (ns ifes.tsp.main
   (:require [ifes.tsp.tsp-core :as tsp-core]
             [ifes.tsp.brute_force :as brute-force]
+            [ifes.tsp.greedy :as greedy]
             )
   (:gen-class))
 
@@ -15,8 +16,15 @@
 ;;(println (combo/permutations (range 1 6)))
 ;
 ;(println (tsp-core/calcula-rota mapa [1 2 3 4 5]))
-(println (brute-force/rotas-validas (brute-force/calcular-rotas mapa brute-force/gerar-rotas)))
-(println (brute-force/melhor-rota mapa brute-force/gerar-rotas))
+;(println (tsp-core/rotas-validas (brute-force/calcular-rotas mapa brute-force/gerar-rotas)))
+;(println (brute-force/melhor-rota mapa brute-force/gerar-rotas))
+
+(println greedy/primeira-rota)
+;(println greedy/cidades)
+;(println (greedy/proximas-rotas mapa (first greedy/primeira-rota) greedy/cidades))
+;(println (greedy/melhor-cidade (tsp-core/rotas-validas(greedy/proximas-rotas mapa (first greedy/primeira-rota) greedy/cidades))))
+;(println (get (greedy/melhor-cidade (tsp-core/rotas-validas(greedy/proximas-rotas mapa (first greedy/primeira-rota) greedy/cidades))) :proxima-cidade))
+(println (greedy/melhor-rota mapa greedy/primeira-rota greedy/cidades))
 
 (defn -main
   [& args]

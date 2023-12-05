@@ -16,12 +16,7 @@
   )
 )
 
-(defn rotas-validas
-  [rotas]
-  (filter (fn [rota] (> (get rota :custo) -1)) rotas)
-)
-
 (defn melhor-rota
   [mapa rotas]
-  (apply min-key :custo (rotas-validas (calcular-rotas mapa rotas)))
+  (apply min-key :custo (tsp-core/rotas-validas (calcular-rotas mapa rotas)))
 )
