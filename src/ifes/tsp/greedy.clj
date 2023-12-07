@@ -20,7 +20,7 @@
   (apply min-key :custo rotas)
 )
 
-(def primeira-rota [(rand-int tsp-core/num-cidades)])
+(def primeira-rota [(inc (rand-int (dec tsp-core/num-cidades)))])
 
 (defn remover-cidade
   [cidade cidades]
@@ -31,7 +31,6 @@
 
 (defn proxima-melhor-cidade
   [mapa rota cidades-restantes]
-  ;(println (get :proxima-cidade (melhor-cidade (tsp-core/rotas-validas(proximas-rotas mapa (last rota) cidades-restantes)))))
   (get (melhor-cidade (tsp-core/rotas-validas(proximas-rotas mapa (last rota) cidades-restantes))) :proxima-cidade)
 )
 
