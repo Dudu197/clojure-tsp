@@ -1,8 +1,11 @@
 (ns ifes.tsp.tsp-core
   (:gen-class))
 
-(def num-cidades "Número de cidades" 5)
+(def num-cidades "Número de cidades" 7)
 (def distancia-maxima "Distância máxima entre as cidades" 50)
+(def num-conexoes "Número me mínimo de conexões que uma cidade deve ter, se usando o mapa seguro" 4)
+
+(defn definir-num-cidades "Define o número de cidades" [num] (def num-cidades num))
 
 
 (defn nome-mapa
@@ -66,7 +69,7 @@
 (defn cidade-valida?
   "Valida se uma cidade é válida. Para ser válida ela deve se ligar com pelo menos outras duas cidades. Isso evita o algoritmo não conseguir sair da cidade"
   [mapa cidade]
-  (>= (count (filter true? (vec (for [i (range 1 (inc num-cidades))] (and (not= i cidade) (caminho-valido? mapa cidade i)))))) 2))
+  (>= (count (filter true? (vec (for [i (range 1 (inc num-cidades))] (and (not= i cidade) (caminho-valido? mapa cidade i)))))) num-conexoes))
 (defn mapa-invalido
   [mapa]
   (some

@@ -18,7 +18,7 @@
   (apply min-key :custo rotas)
 )
 
-(def primeira-rota "Calcula a primeira rota com base em uma cidade aleatória" [(inc (rand-int (dec tsp-core/num-cidades)))])
+(defn primeira-rota "Calcula a primeira rota com base em uma cidade aleatória" [] [(inc (rand-int (dec tsp-core/num-cidades)))])
 
 (defn remover-cidade
   "Remove uma cidade da lista"
@@ -27,7 +27,7 @@
 )
 
 
-(def cidades "Cria uma lista das cidades" (remover-cidade (first primeira-rota) (range 1 (inc tsp-core/num-cidades))))
+(defn cidades "Cria uma lista das cidades" [rota] (remover-cidade (first rota) (range 1 (inc tsp-core/num-cidades))))
 
 (defn proxima-melhor-cidade
   "Escolhe a cidade com menor custo para seguir"
@@ -37,9 +37,10 @@
 
 (defn melhor-rota
   "Calcula a rota utilizando algoritmo guloso, escolhendo sempre a próxima rota de menor custo"
-  [mapa rota cidades-restantes]
+  ([mapa] (let [[cidade-inicial] [(primeira-rota)]] (melhor-rota mapa cidade-inicial (cidades cidade-inicial))))
+  ([mapa rota cidades-restantes]
   (if (> (count cidades-restantes) 1)
     (recur mapa (conj rota (proxima-melhor-cidade mapa rota cidades-restantes)) (remover-cidade (proxima-melhor-cidade mapa rota cidades-restantes) cidades-restantes))
-    (conj rota (first cidades-restantes))
-  )
+    (let [[melhor-rota] [(conj rota (first cidades-restantes))]] {:rota melhor-rota :custo (tsp-core/calcula-rota mapa melhor-rota)})
+  ))
 )

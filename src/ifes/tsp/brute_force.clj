@@ -7,7 +7,7 @@
 )
 
 
-(def gerar-rotas "Gera todas as rotas possíveis" (combo/permutations (range 1 (inc tsp-core/num-cidades))))
+(defn gerar-rotas "Gera todas as rotas possíveis" [] (combo/permutations (range 1 (inc tsp-core/num-cidades))))
 
 (defn calcular-rotas
   "Calcula o valor de uma rota específica"

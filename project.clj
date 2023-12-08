@@ -7,7 +7,9 @@
                  [org.clojure/core.match "1.0.1"]
                  [org.clojure/tools.cli "1.0.219"]
                  [instaparse "1.4.12"]
-                 [org.clojure/math.combinatorics "0.2.0"]]
+                 [org.clojure/math.combinatorics "0.2.0"]
+                 [metosin/jsonista "0.3.8"]
+                 ]
   :main ^:skip-aot ifes.tsp.main
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all
