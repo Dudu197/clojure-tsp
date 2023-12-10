@@ -71,7 +71,7 @@
   (tsp-core/definir-num-cidades cidades)
   (tsp-core/definir-distancia-maxima distancia)
   (tsp-core/definir-num-conexoes (dec cidades))
-  (executar-algoritmo algoritmo (tsp-core/gerar-cidades-seguro))
+  (executar-algoritmo algoritmo (tsp-core/gerar-cidades))
 )
 
 (defn -main
