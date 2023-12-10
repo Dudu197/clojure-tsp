@@ -38,7 +38,6 @@
   (println "Mapa (opcional): informe um arquivo json para ser utilizado como mapa. Incompatível se o número de cidades for fornecido")
   (println "Cidades (opcional): informe o número de cidades a ser gerado. Incompatível se o mapa for fornecido")
   (println "Distância máxima (opcional): informe a distância máxima entre as cidades. Incompatível se o mapa for fornecido. Obrigatório de o número de cidades for fornecido")
-  (println "Número de conexões (opcional): informe o número mínimo de conexões que cada cidade deve ter. Deve ser menor que o número de cidades. Incompatível se o mapa for fornecido. Obrigatório de o número de cidades for fornecido")
   (println "")
   (println "Exemplos:")
   (println "lein run both resources/ex01.json")
@@ -47,6 +46,7 @@
 
 (defn executar-algoritmo
   [algoritmo mapa]
+  (println mapa)
   (imprimir-mapa mapa)
   (match algoritmo
      "bruteforce" (executar-forca-bruta mapa)
@@ -57,14 +57,19 @@
 
 (defn executar-json
   [algoritmo arquivo]
-  (executar-algoritmo algoritmo (json/read-value (slurp arquivo)))
+  (let [[conf] [(json/read-value (slurp arquivo))]]
+    (tsp-core/definir-num-cidades (get conf "cidades"))
+    (tsp-core/definir-distancia-maxima (get conf "distancia"))
+    (tsp-core/definir-num-conexoes (dec (get conf "cidades")))
+    (executar-algoritmo algoritmo (get conf "mapa"))
+  )
 )
 
 (defn executar-parametros
-  [algoritmo cidades distancia conexoes]
+  [algoritmo cidades distancia]
   (tsp-core/definir-num-cidades cidades)
   (tsp-core/definir-distancia-maxima distancia)
-  (tsp-core/definir-num-conexoes conexoes)
+  (tsp-core/definir-num-conexoes (dec cidades))
   (executar-algoritmo algoritmo (tsp-core/gerar-cidades-seguro))
 )
 
@@ -73,6 +78,6 @@
   (match (count args)
      0 (imprimir-instrucoes)
      2 (executar-json (nth args 0) (nth args 1))
-     4 (executar-parametros (nth args 0) (Integer/parseInt (nth args 1)) (Integer/parseInt (nth args 2)) (Integer/parseInt (nth args 3)))
+     3 (executar-parametros (nth args 0) (Integer/parseInt (nth args 1)) (Integer/parseInt (nth args 2)))
   )
 )

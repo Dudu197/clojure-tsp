@@ -23,10 +23,7 @@
   "Calcula aleatoriamente a distância entre uma cidade e as demais. O valor -1 indica que uma cidade não está ligada a outra"
   [cidade]
   (for [_ (range cidade num-cidades)]
-    (if (> 50 (rand-int 100))
-      (inc (rand-int distancia-maxima))
-      -1
-    )
+    (inc (rand-int distancia-maxima))
   )
 )
 
