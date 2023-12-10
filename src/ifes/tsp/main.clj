@@ -17,8 +17,9 @@
   [mapa]
   (println "Executando algoritmo força bruta")
   (def start-time (System/currentTimeMillis))
-  (println (brute-force/melhor-rota mapa (brute-force/gerar-rotas)))
+  (def resultado (brute-force/melhor-rota mapa (brute-force/gerar-rotas)))
   (def end-time (System/currentTimeMillis))
+  (println resultado)
   (println "Força bruta executado em:" (- end-time start-time) "ms")
 )
 
@@ -26,8 +27,9 @@
   [mapa]
   (println "Executando algoritmo guloso")
   (def start-time (System/currentTimeMillis))
-  (println (greedy/melhor-rota mapa))
+  (def resultado (greedy/melhor-rota mapa))
   (def end-time (System/currentTimeMillis))
+  (println resultado)
   (println "Algoritmo guloso executado em:" (- end-time start-time) "ms")
 )
 
@@ -46,7 +48,6 @@
 
 (defn executar-algoritmo
   [algoritmo mapa]
-  (println mapa)
   (imprimir-mapa mapa)
   (match algoritmo
      "bruteforce" (executar-forca-bruta mapa)
