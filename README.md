@@ -1,36 +1,47 @@
-# TSP
+# Problema do Caixeiro Viajante em Clojure
 
-FIXME: description
+Este é um projeto que visa implementar uma solução para o Problema do Caixeiro Viajante (TSP) utilizando a linguagem de programação Clojure.
 
-## Installation
+## Descrição
 
-Download from http://example.com/FIXME.
+O Problema do Caixeiro Viajante é um desafio clássico em otimização combinatória, onde o objetivo é encontrar a rota mais curta que passa por todos os pontos de uma lista e retorna ao ponto de origem. Este projeto implementa algoritmos e estruturas de dados em Clojure para resolver este problema.
 
-## Usage
+## Funcionalidades
 
-FIXME: explanation
+- Implementação de algoritmos de resolução para o Problema do Caixeiro Viajante.
+- Implementação em força bruta, garantindo achar o menor caminho
+- Implementação em algoritmo guloso, achando uma boa solução de forma rápida
+- Geração parametrizada de mapas aleatórios
+- Utilização de mapas definidos em json
 
-    $ java -jar pl0-0.1.0-standalone.jar [args]
+## Requisitos
 
-## Options
+- Clojure instalado (versão 1.11.1)
+- Lein
+- Bibliotecas:
+  - metosin/jsonista (versão 0.3.8)
 
-FIXME: listing of options this app accepts.
+## Como usar
 
-## Examples
+1. **Instalação:** Clone este repositório.
+2. **Execução:** Execute o programa principal com o comando `lein run`.
+3. **Entrada de dados:** A execução sem parâmetros irá informar quais parâmetros informar para executar.
+4. **Visualização do resultado:** O mapa gerado será impresso em forma de um mapa e também o resultado, caminho encontrado e tempo de execução para o algoritmo.
 
-...
+## Exemplo
 
-### Bugs
+```
+$ lein run both 6 100
+$ lein run greedy ./resources/ex01.json
+```
 
-...
+## Contribuição
 
-### Any Other Sections
-### That You Think
-### Might be Useful
+Contribuições são bem-vindas! Se você deseja melhorar este projeto, por favor, abra uma issue para discutir as mudanças propostas.
 
-## License
+## Licença
 
-Copyright © 2023 FIXME
+Copyright © 2023
 
 This program and the accompanying materials are made available under the
 terms of the Eclipse Public License 2.0 which is available at
