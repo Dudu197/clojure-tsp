@@ -6,6 +6,8 @@
 (def num-conexoes "Número me mínimo de conexões que uma cidade deve ter, se usando o mapa seguro" 4)
 
 (defn definir-num-cidades "Define o número de cidades" [num] (def num-cidades num))
+(defn definir-distancia-maxima "Define a distância máxima entre as cidades" [num] (def distancia-maxima num))
+(defn definir-num-conexoes "Define a número de conexões entre as cidades" [num] (def num-conexoes num))
 
 
 (defn nome-mapa
