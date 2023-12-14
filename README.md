@@ -25,14 +25,17 @@ O Problema do Caixeiro Viajante é um desafio clássico em otimização combinat
 
 1. **Instalação:** Clone este repositório.
 2. **Execução:** Execute o programa principal com o comando `lein run`.
-3. **Entrada de dados:** A execução sem parâmetros irá informar quais parâmetros informar para executar.
+3. **Entrada de dados:**
+   1. A execução sem parâmetros irá informar quais parâmetros informar para executar.
+   2. Execução gerando um mapa aleatório: `lein run {greedy|bruteforce|both} {num_cidades} {distancia_cidades}`
+   3. Execução com um mapa json: `lein run {greedy|bruteforce|both} {caminho_json}`
 4. **Visualização do resultado:** O mapa gerado será impresso em forma de um mapa e também o resultado, caminho encontrado e tempo de execução para o algoritmo.
 
 ## Exemplo
 
 ```
 $ lein run both 6 100
-$ lein run greedy ./resources/ex01.json
+$ lein run greedy ./resources/exemplo_5_cidades.json
 ```
 
 ## Contribuição
