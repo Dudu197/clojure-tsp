@@ -4,7 +4,7 @@ Este é um projeto que visa implementar uma solução para o Problema do Caixeir
 
 ## Descrição
 
-O Problema do Caixeiro Viajante é um desafio clássico em otimização combinatória, onde o objetivo é encontrar a rota mais curta que passa por todos os pontos de uma lista e retorna ao ponto de origem. Este projeto implementa algoritmos e estruturas de dados em Clojure para resolver este problema.
+O Problema do Caixeiro Viajante é um desafio clássico em otimização combinatória, onde o objetivo é encontrar a rota mais curta que passa por todos os pontos de uma lista. Este projeto implementa algoritmos e estruturas de dados em Clojure para resolver este problema.
 
 ## Funcionalidades
 
@@ -13,6 +13,16 @@ O Problema do Caixeiro Viajante é um desafio clássico em otimização combinat
 - Implementação em algoritmo guloso, achando uma boa solução de forma rápida
 - Geração parametrizada de mapas aleatórios
 - Utilização de mapas definidos em json
+
+## Mapa das cidades
+
+O mapa das cidades, que diz a distância entre uma cidade A e B, é feita por um dicionário.
+
+Nesse dicionário, as keys indicam o caminho da seguinte maneira: Cidade A "->" Cidade B.
+
+O valor do item indica a distância entre as cidades.
+
+O caminho da cidade A para B também pode ser feito de B para A, dessa forma, o item "1->2" indica tanto o caminho da cidade 1 para a dois quanto da cidade 2 para 1. 
 
 ## Requisitos
 
